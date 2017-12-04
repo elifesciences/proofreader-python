@@ -30,7 +30,7 @@ targets: being paths to python files or packages seperated by spaces
 Configuration
 -------------
 
-`proofreader` contains a default configuration files for both [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8) these can be found in `proofreader.config` these can be overridden by providing your own configuarion files in the root directory you run the `proofreader` module from.
+`proofreader` contains a default configuration files for both [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8) these can be found in `proofreader.config` these can be overridden by providing your own configuration files in the root directory you run the `proofreader` module from.
 
 Testing
 =======
