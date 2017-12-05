@@ -2,8 +2,6 @@
 
 set -e
 
-pip install --requirement requirements.txt
-
 python setup.py install
 
 python -m proofreader proofreader tests
