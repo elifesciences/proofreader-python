@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 tox
 # . .tox/py35/bin/activate

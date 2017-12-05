@@ -53,7 +53,7 @@ def _run_command(command, targets, options):
     :param options: List[str]
     :return: bool
     """
-    print('{}:'.format(command))
+    print('{0}: targets={1} options={2}'.format(command, targets, options))
     cmd = [command] + targets + options
     process = Popen(cmd)
     process.wait()
