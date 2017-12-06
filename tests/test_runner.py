@@ -1,6 +1,6 @@
 try:
     from unittest.mock import patch
-except ImportError:
+except ImportError:  # pragma: no cover
     from mock import patch
 
 from proofreader.runner import run, _run_command

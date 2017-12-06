@@ -1,2 +1,5 @@
-[run]
-omit = venv/*
+[report]
+omit =
+    */virtualenv/*
+    */venv/*
+    */.tox/*
