@@ -1,0 +1,3 @@
+include README.rst
+include proofreader/config/.pylintrc
+include proofreader/config/.flake8
