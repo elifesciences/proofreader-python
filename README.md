@@ -1,6 +1,6 @@
 # Proofreader Python
 
-[![Build Status](https://alfred.elifesciences.org/job/library-proofreader-python/badge/icon)](https://alfred.elifesciences.org/job/library-proofreader-python/) [![Coverage Status](https://coveralls.io/repos/github/elifesciences/proofreader-python/badge.svg?branch=initial_implementation)](https://coveralls.io/github/elifesciences/proofreader-python?branch=initial_implementation)
+[![Build Status](https://alfred.elifesciences.org/buildStatus/icon?job=library-proofreader-python)](https://alfred.elifesciences.org/job/library-proofreader-python/) [![Coverage Status](https://coveralls.io/repos/github/elifesciences/proofreader-python/badge.svg?branch=initial_implementation)](https://coveralls.io/github/elifesciences/proofreader-python?branch=initial_implementation)
 
 proofreader-python is a tool for enforcing opinionated coding standards and conventions through static analysis of the code.
 
