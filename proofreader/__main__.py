@@ -10,6 +10,6 @@ import sys
 
 from proofreader.runner import run
 
-DIRECTORY = os.path.dirname(__file__)
+DIRECTORY = os.getcwd()
 
 run(targets=sys.argv[1:], config_dir=DIRECTORY)
