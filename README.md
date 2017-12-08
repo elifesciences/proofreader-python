@@ -18,7 +18,7 @@ Dependencies
 Installation
 ------------
 
-`pip install proofreader` ** not yet implemented **
+`pip install proofreader`
 
 or
 
