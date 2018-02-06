@@ -2,6 +2,11 @@ from setuptools import setup
 
 import proofreader
 
+
+with open('requirements.txt') as requirements_file:
+    DEPENDENCIES = requirements_file.readlines()
+
+
 setup(
     name='proofreader',
     version=proofreader.__version__,
@@ -9,6 +14,7 @@ setup(
                 'global, though overridable, defaults.',
     packages=['proofreader', 'proofreader.config'],
     include_package_data=True,
+    install_requires=DEPENDENCIES,
     license='MIT',
     url='https://github.com/elifesciences/proofreader-python.git',
     maintainer='eLife Sciences Publications Ltd.',
