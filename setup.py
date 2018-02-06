@@ -3,8 +3,17 @@ from setuptools import setup
 import proofreader
 
 
-with open('requirements.txt') as requirements_file:
-    DEPENDENCIES = requirements_file.readlines()
+DEFAULT_DEPENDENCIES = (
+    'flake8==3.5.0',
+    'pylint==1.7.4',
+)
+
+
+try:
+    with open('requirements.txt') as requirements_file:
+        DEPENDENCIES = requirements_file.readlines()
+except FileNotFoundError:
+    DEPENDENCIES = DEFAULT_DEPENDENCIES
 
 
 setup(
