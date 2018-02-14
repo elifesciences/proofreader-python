@@ -1,3 +1,2 @@
 flake8==3.5.0
-flake8-builtins==1.0.post0
 pylint==1.8.2
