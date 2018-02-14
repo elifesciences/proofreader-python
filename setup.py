@@ -5,7 +5,7 @@ import proofreader
 
 DEFAULT_DEPENDENCIES = (
     'flake8==3.5.0',
-    'pylint==1.7.4',
+    'pylint==1.8.2',
 )
 
 
