@@ -12,7 +12,7 @@ DEFAULT_DEPENDENCIES = (
 try:
     with open('requirements.txt') as requirements_file:
         DEPENDENCIES = requirements_file.readlines()
-except FileNotFoundError:
+except IOError:
     DEPENDENCIES = DEFAULT_DEPENDENCIES
 
 
