@@ -6,6 +6,7 @@ import proofreader
 DEFAULT_DEPENDENCIES = (
     'flake8==3.5.0',
     'pylint==1.8.2',
+    'prettytable==0.7.2',
 )
 
 
@@ -21,7 +22,7 @@ setup(
     version=proofreader.__version__,
     description='Utility for running both Pylint & Flake8 on targets whilst providing '
                 'global, though overridable, defaults.',
-    packages=['proofreader', 'proofreader.config'],
+    packages=['proofreader', 'proofreader.config', 'proofreader.license_checker'],
     include_package_data=True,
     install_requires=DEPENDENCIES,
     license='MIT',
@@ -34,7 +35,12 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.5",
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'proofreader=proofreader.__main__:main',
+        ],
+    },
 
 )
 
