@@ -1,58 +1,54 @@
-import pkg_resources
-import prettytable
-
-
-# TODO available licenses model
 
 
 class Package(object):
-    license = ''
-    name = ''
-    version = ''
+
+    LICENSE_TAG = 'License: '
+    NAME_TAG = 'Name: '
+    _meta_data = []
 
     def __init__(self, pkg_obj):
-        self.pkg_obj = pkg_obj
+        # type: ('pkg_resources.DistInfoDistribution') -> None
+        """
+        :param pkg_obj: :class: `pkg_resources.DistInfoDistribution`
+        """
+        self._pkg_obj = pkg_obj
 
+    def _extract_meta_value(self, tag):
+        # type: (str, List[str]) -> str
+        """Find a target value by `tag` from given meta data.
 
+        :param tag: str
+        :param meta_data: list
+        :return: str
+        """
+        try:
+            return [l[len(tag):] for l in self.meta_data if l.startswith(tag)][0]
+        except IndexError:
+            return '* Not Found *'
 
-def get_pkg_license(pkg):
-    try:
-        lines = pkg.get_metadata_lines('METADATA')
-    except:
-        lines = pkg.get_metadata_lines('PKG-INFO')
+    @property
+    def license(self):
+        # type: () -> str
+        return self._extract_meta_value(self.LICENSE_TAG)
 
-    for line in lines:
-        if line.startswith('License:'):
-            return line[9:]
-    return '(Licence not found)'
+    @property
+    def meta_data(self):
+        # type: () -> List[str]
+        if not self._meta_data:
+            for tag in ['METADATA', 'PKG-INFO']:
+                try:
+                    self._meta_data = list(self._pkg_obj.get_metadata_lines(tag))
+                except (IOError, KeyError):
+                    pass
 
+        return self._meta_data
 
-def get_pkg_name(pkg):
-    try:
-        lines = pkg.get_metadata_lines('METADATA')
-    except:
-        lines = pkg.get_metadata_lines('PKG-INFO')
+    @property
+    def name(self):
+        # type: () -> str
+        return self._extract_meta_value(self.NAME_TAG)
 
-    for line in lines:
-        if line.startswith('Name:'):
-            return line[6:]
-    return '(Name not found)'
-
-
-def get_pkg_version(pkg):
-    return pkg.version or ''
-
-
-def print_packages_and_licenses():
-    t = prettytable.PrettyTable(['Package', 'Version', 'License', 'Can Use'])
-
-    # get a package by name
-    packages = pkg_resources.working_set
-
-    # for p in packages:
-    #     print(type(p))  # <class 'pkg_resources.DistInfoDistribution'>
-
-    for pkg in sorted(packages, key=lambda x: str(x).lower()):
-        t.add_row((get_pkg_name(pkg), get_pkg_version(pkg), get_pkg_license(pkg), 'yes'))
-
-    print(t)
+    @property
+    def version(self):
+        # type: () -> str
+        return self._pkg_obj.version or ''
