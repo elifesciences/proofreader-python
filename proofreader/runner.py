@@ -14,7 +14,9 @@ from subprocess import Popen
 import sys
 
 from proofreader.config.utils import (
-    get_flake8_options, get_pylint_options
+    get_flake8_options,
+    get_pylint_options,
+    get_license_checker_config_path,
 )
 from proofreader.license_checker import run_license_checker
 
@@ -33,7 +35,7 @@ def run(targets, config_dir='.', check_licenses=False):
     flake8_return_state = False
 
     if check_licenses:
-        run_license_checker(config_dir=config_dir)
+        run_license_checker(config_path=get_license_checker_config_path(config_dir))
 
     pylint_options = get_pylint_options(config_dir=config_dir)
     flake8_options = get_flake8_options(config_dir=config_dir)

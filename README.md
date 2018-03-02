@@ -45,9 +45,9 @@ Configuration
 
 `proofreader` contains a default configuration files for both [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8) these can be found in `proofreader.config` these can be overridden by providing your own configuration files in the root directory you run the `proofreader` module from.
 
-To configure restricted license types simply provide a file named `.restricted_licenses.txt` and included one license name per line.
+To configure whitelisted license types simply provide a file named `.licenses_whitelist.txt` and included one license name per line.
 
-Example `.restricted_licenses.txt` contents:
+Example `.licenses_whitelist.txt` contents:
 
 ```
 BSD (3 clause)

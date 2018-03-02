@@ -1,12 +1,11 @@
 from __future__ import print_function
-import os
 import pkg_resources
 
+from proofreader.config.utils import LICENSE_CHECKER_CONFIG_NAME
 from proofreader.license_checker.package import Package
 from proofreader.utils.print_table import PrintTable
 
 
-CONFIG_NAME = '.restricted_licenses.txt'
 ROW_HEADERS = ['Package', 'Version', 'License', 'Can Use']
 
 
@@ -20,41 +19,41 @@ def _get_packages():
                                                    key=lambda x: str(x).lower())]
 
 
-def _get_restricted_licenses(config_path):
+def _get_whitelist_licenses(config_path):
     # type: (str) -> List[str]
-    """Get restricted license names from config file.
+    """Get whitelist license names from config file.
 
     :param config_path: str
     :return: list
     """
 
-    restricted_licenses = []
+    whitelist_licenses = []
 
     try:
+        print('config path', config_path)
         with open(config_path) as config:
-            restricted_licenses = [line.rstrip() for line in config]
+            whitelist_licenses = [line.rstrip() for line in config]
     except IOError:  # pragma: no cover
-        print('Warning: No .restricted_licenses.txt file was found.')
+        print('Warning: No {} file was found.'.format(LICENSE_CHECKER_CONFIG_NAME))
 
-    return restricted_licenses
+    return whitelist_licenses
 
 
-def run_license_checker(config_dir):
+def run_license_checker(config_path):
     # type: (str) -> None
     """Generate table of installed packages and check for license
     warnings based off user defined restricted license values.
 
-    :param config_dir:
+    :param config_path: str
     :return:
     """
-    config_path = os.path.join(config_dir, CONFIG_NAME)
+    whitelist_licenses = _get_whitelist_licenses(config_path)
     table = PrintTable(ROW_HEADERS)
-    restricted_licenses = _get_restricted_licenses(config_path)
 
     warnings = []
 
     for pkg in _get_packages():
-        allowed = pkg.license not in restricted_licenses
+        allowed = pkg.license in whitelist_licenses
         table.add_row((pkg.name, pkg.version, pkg.license, str(allowed)))
 
         if not allowed:
