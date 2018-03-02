@@ -5,6 +5,7 @@ import pkg_resources
 import prettytable
 
 from proofreader.license_checker.package import Package
+from proofreader.utils.print_table import PrintTable
 
 
 CONFIG_NAME = '.restricted_licenses.txt'
@@ -49,14 +50,14 @@ def run_license_checker(config_dir):
     :return:
     """
     config_path = os.path.join(config_dir, CONFIG_NAME)
-    table = prettytable.PrettyTable(ROW_HEADERS)
+    table = PrintTable(ROW_HEADERS)
     restricted_licenses = _get_restricted_licenses(config_path)
 
     warnings = []
 
     for pkg in _get_packages():
         allowed = pkg.license not in restricted_licenses
-        table.add_row((pkg.name, pkg.version, pkg.license, allowed))
+        table.add_row((pkg.name, pkg.version, pkg.license, str(allowed)))
 
         if not allowed:
             warnings.append(pkg)
