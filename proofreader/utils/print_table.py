@@ -49,8 +49,8 @@ class PrintTable(object):
         :return: str
         """
         output = ''
-        for col, width in self.col_widths.items():
-            line = self.COLUMN_MARK + (self.DASH * (width + self.PADDING * 2))
+        for col in sorted(self.col_widths):
+            line = self.COLUMN_MARK + (self.DASH * (self.col_widths[col] + self.PADDING * 2))
             output += line
         output += self.COLUMN_MARK + '\n'
 

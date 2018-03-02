@@ -2,8 +2,6 @@ from __future__ import print_function
 import os
 import pkg_resources
 
-import prettytable
-
 from proofreader.license_checker.package import Package
 from proofreader.utils.print_table import PrintTable
 
