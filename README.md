@@ -27,13 +27,33 @@ or
 Usage
 -----
 
-`python -m proofreader [targets]`
-targets: being paths to python files or packages seperated by spaces
+`proofreader --targets dir file1.py file2.py`
+
+`--targets`: Paths to python files or packages seperated by spaces that you would like run through `pylint` and `flake8`.
+
+`--check-licenses`: Optional check for restricted licenses of installed packages.
+
+Example usage:
+`proofreader --targets dir file1.py file2.py --check-licenses true`
+
+or in isolation:
+
+`proofreader --check-licenses true`
 
 Configuration
 -------------
 
 `proofreader` contains a default configuration files for both [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8) these can be found in `proofreader.config` these can be overridden by providing your own configuration files in the root directory you run the `proofreader` module from.
+
+To configure whitelisted license types simply provide a file named `.licenses_whitelist.txt` and include one license name per line.
+
+Example `.licenses_whitelist.txt` contents:
+
+```
+BSD (3 clause)
+LGPL
+MPL-2.0
+```
 
 Testing
 =======

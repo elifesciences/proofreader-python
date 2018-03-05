@@ -1,15 +1,18 @@
-"""Main module for proofreader.
-
-This module
-
-- Takes `n` commandline arguments as `targets` and calls the runner.run function
-
-"""
+import argparse
 import os
-import sys
 
 from proofreader.runner import run
 
 DIRECTORY = os.getcwd()
 
-run(targets=sys.argv[1:], config_dir=DIRECTORY)
+PARSER = argparse.ArgumentParser(description='proofreader')
+
+PARSER.add_argument('--check-licenses', type=bool, help='Check for supported licenses .e.g. true')
+PARSER.add_argument('--targets', default=[], nargs='*',
+                    help='Target files and directories .e.g. dir1/* file1.py file2.py')
+
+ARGS = PARSER.parse_args()
+
+
+def main():
+    run(targets=ARGS.targets, config_dir=DIRECTORY, check_licenses=ARGS.check_licenses)
