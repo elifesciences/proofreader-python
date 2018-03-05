@@ -29,7 +29,7 @@ def get_flake8_options(config_dir='.'):
 def get_license_checker_config_path(config_dir='.'):
     # type: (str) -> List[str]
     """Checks for local config overrides for license checker,
-    if not found it return the package default.
+    if not found it returns the package default.
 
     :param config_dir:
     :return: str
