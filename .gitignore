@@ -1,6 +1,9 @@
 /build/
+/.coverage
 /dist/
 \.tox/
 .cache/
 __pycache__/
 /venv/
+/proofreader.egg-info/
+*.pyc
