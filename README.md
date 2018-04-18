@@ -63,3 +63,5 @@ You can run the full automated test suite from the base folder with:
 ```
 $ ./project_tests.sh
 ```
+
+Some more text here...
