@@ -60,4 +60,6 @@ Testing
 
 You can run the full automated test suite from the base folder with:
 
-`$ ./project_tests.sh`
+```
+$ ./project_tests.sh
+```
