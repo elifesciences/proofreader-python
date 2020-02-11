@@ -10,7 +10,7 @@ elifeLibrary {
     def candidateVersion
     stage 'Build', {
         sh './build.sh'
-        candidateVersion = sh(script: ".tox/py35/bin/python -c 'import proofreader; print(proofreader.__version__)'", returnStdout: true).trim()
+        candidateVersion = sh(script: ".tox/py3/bin/python -c 'import proofreader; print(proofreader.__version__)'", returnStdout: true).trim()
         echo "Candidate version: v${candidateVersion}"
     }
 
